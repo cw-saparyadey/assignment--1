@@ -1,6 +1,5 @@
 var form = document.getElementById("contactForm");
 
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -18,6 +17,18 @@ form.addEventListener("submit", function (e) {
     } else {
       field.classList.remove("invalid");
     }
+  }
+
+  var nameInput = document.getElementById("name");
+  var nameField = nameInput.closest(".field");
+  var nameValue = nameInput.value.trim();
+  var nameRegex = /^[A-Za-z ]{2,50}$/;
+
+  if (!nameRegex.test(nameValue)) {
+    nameField.classList.add("invalid");
+    valid = false;
+  } else {
+    nameField.classList.remove("invalid");
   }
 
   var email = document.getElementById("email");
@@ -46,6 +57,7 @@ form.addEventListener("submit", function (e) {
   } else {
     radioField.classList.remove("invalid");
   }
+
   var consent = document.getElementById("consent");
   var consentField = consent.closest(".checkbox-field");
 
