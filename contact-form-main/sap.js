@@ -19,16 +19,32 @@ form.addEventListener("submit", function (e) {
     }
   }
 
-  var nameInput = document.getElementById("name");
-  var nameField = nameInput.closest(".field");
-  var nameValue = nameInput.value.trim();
-  var nameRegex = /^[A-Za-z ]{2,50}$/;
+  var firstName = document.getElementById("firstName");
+  var firstNameField = firstName.closest(".field");
+  var firstNameError = document.getElementById("firstNameError");
+  var nameRegex = /^[A-Za-z]{2,50}$/;
 
-  if (!nameRegex.test(nameValue)) {
-    nameField.classList.add("invalid");
+  if (!nameRegex.test(firstName.value.trim())) {
+    firstNameField.classList.add("invalid");
+    firstNameError.textContent = "Please enter valid name";
     valid = false;
   } else {
-    nameField.classList.remove("invalid");
+    firstNameField.classList.remove("invalid");
+    firstNameError.textContent = "This field is required";
+  }
+
+  
+  var lastName = document.getElementById("lastName");
+  var lastNameField = lastName.closest(".field");
+  var lastNameError = document.getElementById("lastNameError");
+
+  if (!nameRegex.test(lastName.value.trim())) {
+    lastNameField.classList.add("invalid");
+    lastNameError.textContent = "Please enter valid name";
+    valid = false;
+  } else {
+    lastNameField.classList.remove("invalid");
+    lastNameError.textContent = "This field is required";
   }
 
   var email = document.getElementById("email");
