@@ -116,14 +116,18 @@ textarea:focus {
 }
 
 .radio span {
+  display: inline-block;
   width: 18px;
   height: 18px;
   background: url("./assets/images/icon-radio-unselected.svg") no-repeat center;
+  background-size: contain;
 }
 
 .radio input:checked + span {
   background: url("./assets/images/icon-radio-selected.svg") no-repeat center;
+  background-size: contain;
 }
+
 
 
 .checkbox-field label {
@@ -198,5 +202,8 @@ button:hover {
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+   .radio-group {
+    flex-direction: column;
   }
 }

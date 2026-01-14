@@ -8,16 +8,20 @@ form.addEventListener("submit", function (e) {
   var allRequired = form.querySelectorAll("[required]");
 
   for (var i = 0; i < allRequired.length; i++) {
-    var input = allRequired[i];
-    var field = input.closest(".field");
+  var input = allRequired[i];
+  var field =
+    input.closest(".field") || input.closest(".checkbox-field");
 
-    if (input.value.trim() === "") {
-      field.classList.add("invalid");
-      valid = false;
-    } else {
-      field.classList.remove("invalid");
-    }
+  if (!field) continue;
+
+  if (input.value.trim() === "") {
+    field.classList.add("invalid");
+    valid = false;
+  } else {
+    field.classList.remove("invalid");
   }
+}
+
 
   var firstName = document.getElementById("firstName");
   var firstNameField = firstName.closest(".field");
