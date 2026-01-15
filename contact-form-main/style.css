@@ -78,6 +78,8 @@ textarea {
   border: 1px solid var(--grey);
   border-radius: 6px;
   cursor: pointer;
+  resize:none;
+  max-width: 100%;
 }
 
 
@@ -112,23 +114,38 @@ textarea:focus {
 }
 
 .radio input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .radio span {
-  display: inline-block;
   width: 18px;
   height: 18px;
-  background: url("./assets/images/icon-radio-unselected.svg") no-repeat center;
-  background-size: contain;
+  border: 2px solid var(--grey);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.radio span::after {
+  content: "";
+  width: 18px;                 
+  height: 18px;
+  background: url("./assets/images/icon-radio-selected.svg") no-repeat center;
+  background-size: 18px 18px;  
+  opacity: 0;
+}
+
 
 .radio input:checked + span {
-  background: url("./assets/images/icon-radio-selected.svg") no-repeat center;
-  background-size: contain;
+  border-color: var(--greenDark);  
 }
 
-
+.radio input:checked + span::after {
+  opacity: 1;                       
+}
 
 .checkbox-field label {
   display: flex;
